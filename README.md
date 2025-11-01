@@ -17,6 +17,11 @@ Includes timer, roll counter, and confetti celebration when you win! 🎉
 - **CSS** for layout and styling
 - **react-confetti** for win effects
 
+## 👨‍💻 About This Project
+I made this project as part of my React learning journey.  
+I'm still in **my second week of learning React**, and this was a fun way to practice hooks, props, and state management.  
+Building this helped me understand how React components interact and how to manage dynamic UI updates. 🚀
+
 ## 🏃‍♂️ Run Locally
 
 1. **Clone this repository**

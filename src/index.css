@@ -1,0 +1,242 @@
+:root {
+    --bg: #0B2434;
+    --card: #F5F5F5;
+    --accent: #5035FF;
+    --accent-600: #3622CC;
+    --text: #333333;
+    --glass: rgba(255,255,255,0.06);
+    --shadow: 0 8px 20px rgba(3,10,18,0.55);
+    --transition-fast: 180ms;
+    --transition-medium: 900ms;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+}
+
+body {
+    font-family: Karla, sans-serif;
+    margin: 0;
+    background: linear-gradient(180deg, #071826 0%, var(--bg) 60%);
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div#root {
+    height: 100%;
+    width: 100%;
+    max-height: 520px;
+    max-width: 420px;
+}
+
+main {
+    background-color: var(--card);
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    transform-origin: center;
+    transition: transform var(--transition-medium) ease, box-shadow var(--transition-medium) ease;
+    animation: fadeIn 900ms ease both;
+}
+
+.main-elevate-on-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 40px rgba(3,10,18,0.6);
+}
+
+.dice-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+    padding: 8px 4px;
+}
+
+.dice-container button {
+    height: 60px;
+    width: 60px;
+    box-shadow: 0 6px 14px rgba(3,10,18,0.14);
+    border-radius: 12px;
+    border: none;
+    background-color: white;
+    font-family: Karla, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-grid;
+    place-items: center;
+    transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease, background-color var(--transition-fast) ease;
+}
+
+.dice-container button:hover {
+    transform: translateY(-6px) rotate(-1.5deg);
+    box-shadow: 0 14px 28px rgba(3,10,18,0.18);
+}
+
+.dice-container button:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+/* when a dice is held (if app toggles a class), give a gentle accent */
+.dice-container button.held {
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-600) 100%);
+    color: #fff;
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(80,53,255,0.18);
+}
+
+.roll-button {
+    margin-top: 20px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-600) 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: Karla, sans-serif;
+    box-shadow: 0 12px 26px rgba(80,53,255,0.18);
+    transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease, opacity var(--transition-fast);
+    z-index: 101;
+  }
+
+.roll-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(80,53,255,0.22);
+}
+
+.roll-button:active {
+    transform: translateY(-2px) scale(0.99);
+}
+
+.hero {
+    text-align: center;
+    padding: 18px 12px 8px;
+}
+
+.hero h1 {
+    margin: 0;
+    color: var(--accent-600);
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+    animation: popIn 700ms cubic-bezier(.2,.9,.2,1) both;
+  }
+
+.hero p {
+    margin-top: 8px;
+    color: var(--text);
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.counter {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.8;
+    font-weight: 500;
+}
+.timer {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+/* small utility */
+.muted { opacity: 0.7; }
+
+/* Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px) scale(0.995); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.92); opacity: 0; }
+    60% { transform: scale(1.03); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Accessible focus ring for keyboard users */
+button:focus {
+    outline: 3px solid rgba(80,53,255,0.18);
+    outline-offset: 3px;
+}
+
+.gamewon {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--accent), var(--accent-600));
+    padding: 20px 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(3,10,18,0.4),
+                0 0 0 100vmax rgba(0,0,0,0.5);
+    animation: winPopup 800ms cubic-bezier(.17,.67,.23,1.2) both;
+    z-index: 100;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+@keyframes winPopup {
+    0% { 
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.8);
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.game-area {
+  position: relative;
+  width: 450px; /* or whatever fits your design */
+  margin: 0 auto;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow: hidden; /* keeps confetti inside */
+}
+
+.confetti-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none; /* so you can still click buttons */
+}

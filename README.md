@@ -17,7 +17,7 @@ Includes timer, roll counter, and confetti celebration when you win! 🎉
 ## 🧠 Built With
 - **React** (useState, useEffect, useRef hooks)
 - **Vite** (fast dev environment)
-- **CSS** for layout and styling
+- **CSS** for layout and stylings
 - **react-confetti** for win effects
 
 ## 👨‍💻 About This Project

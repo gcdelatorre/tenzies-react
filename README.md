@@ -24,9 +24,3 @@ Includes timer, roll counter, and confetti celebration when you win! 🎉
 - **Vite** (fast dev environment)
 - **CSS** for layout and stylings
 - **react-confetti** for win effects
-
-## 🏃‍♂️ Run Locally
-
-1. **Clone this repository**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/tenzies-game.git
